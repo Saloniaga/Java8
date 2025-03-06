@@ -40,9 +40,12 @@ public class Sort {
         Collections.sort(persons, (a,b)->a.getAge().compareTo(b.getAge()));
         System.out.println(persons);
 
-        //JAVA 8
-        persons.sort(Comparator.comparing(Person::getName));
-        System.out.println(persons);
+        //JAVA 8 with method reference
+        persons.stream().sorted(Comparator.comparing(Person::getName)).forEach(System.out::println);
+
+        System.out.println("testing..");
+        //using stream API
+        persons.stream().sorted((p1,p2)->(int)(p1.getSalary() - p2.getSalary())).forEach(x-> System.out.println(x));
 
     }
 }
